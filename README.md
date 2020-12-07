@@ -9,7 +9,7 @@ Solve 9x9 sudokus based in the boolean satisfiability problem (SAT) using [PicoS
 4. Go to the directory of the project.
 5. Run the command obtained in step 3.
 
-Now, if it is SATISFACIBLE, to see the solution:
+Now, if it is SATISFIABLE, to see the solution:
 
 6. Copy the solution.
 7. Paste the solution inside *sudoku_cnf*.
