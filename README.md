@@ -21,3 +21,9 @@ Now, if it is SATISFACIBLE, to see the solution:
 6. Copy the solution.
 7. Paste the solution inside *sudoku_cnf*.
 8. Run `cat ./sudoku_cnf | ./sudoku_ui`
+
+## SUMMARY
+<img src="/tutorial/1.png" width="1920">
+<img src="/tutorial/2.png" width="1920">
+<img src="/tutorial/3.png" width="1920">
+<img src="/tutorial/4.png" width="1920">
