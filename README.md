@@ -20,4 +20,4 @@ Now, if it is SATISFACIBLE, to see the solution:
 
 6. Copy the solution.
 7. Paste the solution inside *sudoku_cnf*.
-8. Run `cat ./formula.cnf | ./sudoku_ui`
+8. Run `cat ./sudoku_cnf | ./sudoku_ui`
