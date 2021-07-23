@@ -1,6 +1,6 @@
 # SUDOKU SAT SOLVER
 ## DESCRIPTION
-Solve 9x9 sudokus based in the boolean satisfiability problem (SAT) using [PicoSAT](http://fmv.jku.at/picosat/#license).
+Solve sudokus based in the boolean satisfiability problem ([SAT](https://en.wikipedia.org/wiki/Boolean_satisfiability_problem)) using [PicoSAT](http://fmv.jku.at/picosat/#license).
 
 ## INSTRUCTIONS
 1. Make a copy of this [Template](https://docs.google.com/spreadsheets/d/1rd8iAS85u3_tvrnMjX1qa3-lBpkvhdP2gK_TOauqyb8/edit?usp=sharing) (File > Make a copy).
