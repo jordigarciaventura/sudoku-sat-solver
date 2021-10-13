@@ -8,15 +8,3 @@ Solve sudokus based in the boolean satisfiability problem ([SAT](https://en.wiki
 3. Copy the output command.
 4. Go to the directory of the project.
 5. Run the command obtained in step 3.
-
-Now, if it is SATISFIABLE, to see the solution:
-
-6. Copy the solution.
-7. Paste the solution inside *sudoku_cnf*.
-8. Run `cat ./sudoku_cnf | ./sudoku_ui`
-
-## SUMMARY
-<img src="/tutorial/1.png" width="1920">
-<img src="/tutorial/2.png" width="1920">
-<img src="/tutorial/3.png" width="1920">
-<img src="/tutorial/4.png" width="1920">
