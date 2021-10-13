@@ -36,6 +36,9 @@ int main()
 		else if (c1 == '-')
 		{
 			scanf("%i", &k);
+		} else if (c1 == 'U') {
+			printf("UNSATISFIABLE\n");
+			return 0;
 		}
 		
 		scanf("%c", &c1);
