@@ -6,63 +6,66 @@
 
 int main(int argc, char *argv[])
 {
-    /*
-    Args[] creation with structure:
-    {"./picosat", "formula.cnf", "-a", argv[1], "-a", "argv[2]", ..., NULL}
-    */
-    int argsLength = (argc - 1) * 2 + 3;
-    char *args[argsLength];
+    /* args[] = {"./picosat", "formula.cnf", "-a", argv[1], "-a", "argv[2]", ..., NULL} */
+    
+    int argslen = (argc - 1) * 2 + 3;
+    char *args[argslen];
     args[0] = "./picosat";
     args[1] = "formula.cnf";
-    int argsIndex = 2;
+    int argsidx = 2;
     for (int i = 1; i < argc; i++)
     {
-        args[argsIndex] = "-a";
-        args[argsIndex + 1] = argv[i];
-        argsIndex += 2;
+        args[argsidx] = "-a";
+        args[argsidx + 1] = argv[i];
+        argsidx += 2;
     }
-    args[argsLength - 1] = NULL;
+    args[argslen - 1] = NULL;
+
+    /* ./picosat formula.cnf -a argv[1] ... | ./sudoku_ui */
 
     int fd[2];
     if (pipe(fd) == -1)
     {
-        perror("An error ocurred with opening the pipe\n");
+        perror("Error during pipe creation\n");
         exit(-1);
     }
 
-    int pid1 = fork();
-    if (pid1 < 0)
+    int pid = fork();
+    if (pid < 0)
     {
         perror("Error during child creation\n");
         return 0;
     }
-
-    if (pid1 == 0) // Child (solve sudoku)
+    
+    if (pid == 0) // Child 1 (solve sudoku)
     {
-        dup2(fd[1], STDOUT_FILENO);
         close(fd[0]);
+
+        dup2(fd[1], STDOUT_FILENO);
         close(fd[1]);
+
         execv("./picosat", args);
     }
 
-    int pid2 = fork();
-    if (pid2 < 0)
+    close(fd[1]);
+
+    pid = fork();
+    if (pid < 0)
     {
         perror("Error during child creation\n");
         return 0;
     }
 
-    if (pid2 == 0) // Child (print solution)
+    if (pid == 0) // Child 2 (format solution)
     {
         dup2(fd[0], STDIN_FILENO);
         close(fd[0]);
-        close(fd[1]);
+
         execlp("./sudoku_ui", "./sudoku_ui", NULL);
     }
 
     close(fd[0]);
-    close(fd[1]);
 
-    waitpid(pid1, NULL, 0);
-    waitpid(pid2, NULL, 0);
+    wait(NULL);
+    wait(NULL);
 }
